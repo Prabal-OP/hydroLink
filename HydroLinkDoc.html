@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydroLink - Water Level Monitoring System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 300;
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .header {
+            text-align: center;
+            padding: 25px 20px;
+            margin-bottom: 0;
+        }
+
+        .logo {
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            width: 180px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .wave-container {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            line-height: 0;
+        }
+
+        .wave-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .section2 {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h1 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            color: #2c5282;
+            margin-bottom: 24px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .component {
+            margin-bottom: 32px;
+        }
+
+        .component:last-child {
+            margin-bottom: 0;
+        }
+
+        .component-title {
+            color: #4299e1;
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .component-subtitle {
+            font-weight: 400;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-weight: 400;
+        }
+        .image-placeholderrr {
+            width: 100%;
+            height: 600px;
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-weight: 400;
+        }
+
+        .specs-list {
+            list-style: none;
+        }
+
+        .specs-list li {
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .specs-list li::before {
+            content: "•";
+            color: #4299e1;
+            position: absolute;
+            left: 0;
+        }
+
+        .team-member {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .team-member:last-child {
+            border-bottom: none;
+        }
+
+        .team-member-name {
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .team-member-role {
+            color: #718096;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        p {
+            font-weight: 400;
+            color: #4a5568;
+            margin-bottom: 16px;
+        }
+
+        footer {
+            margin-top: 48px;
+            padding: 24px 20px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .footer-wave {
+            position: absolute;
+            right: 0;
+            bottom: 50;
+            width: 120px;
+            height: auto;
+            z-index: 1;
+        }
+
+        .logo-divider {
+            width: 1px;
+            height: 40px;
+            background-color: #e2e8f0;
+        }
+
+
+        .team-section {
+            color: #00A3D7;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .team-member {
+            margin-bottom: 16px;
+            padding: 0;
+            border: none;
+        }
+
+        .team-member-name {
+            color: #2c5282;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .team-member-role {
+            color: #718096;
+            font-style: italic;
+            font-size: 14px;
+        }
+        @media screen and (min-width: 1024px) {
+
+
+            h1 {
+        font-size: 36px;
+        margin-bottom: 32px;
+    }
+        h2 {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+    .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    .team-section {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .section2 .team-member {
+        width: calc(25% - 24px);
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 6px;
+        text-align: center;
+    }
+
+    /* Footer centering */
+    .footer-logos {
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+   
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="./InAppLogo.png" alt="HydroLink Logo" srcset="">
+            </div>
+        </div>
+        <div class="wave-container">
+            <img src="./wavee.png" alt="">
+        </div>
+        <div class="content">
+            <h1 style="font-size: 24px; font-weight: 300; padding-bottom: 10px; color: #2c5282;">IoT Water Level Monitoring System</h1>
+            <div class="section">
+                <h2>Project Overview</h2>
+                <p>The IoT Water Level Monitoring System is a smart solution developed at KLS Gogte Institute of Technology (GIT)
+                     that enables real-time water level monitoring through IoT technology. The system combines hardware sensors with a
+                     custom-built Android 
+                     application to provide efficient water level tracking and management capabilities.</p>
+            </div>
+
+        <div class="section">
+            <h2>Technical Specifications</h2>
+            <div class="component-title">Hardware Components</div>
+            
+            <div>
+                <div class="component">
+                    <div class="component-subtitle">Ultrasonic Sensor</div>
+                    <div class="image-placeholder">
+                        <img src="./comp1.png" style="height: 200px; width: auto;" alt="">
+                    </div>
+                    <ul class="specs-list">
+                        <li>Model: GPRobot A02YYU/W Waterproof</li>
+                        <li>Range: 3-450cm</li>
+                        <li>Interface: UART</li>
+                        <li>Protection Rating: IP67</li>
+                        <li>Purpose: Precise water level measurement</li>
+                    </ul>
+                </div>
+    
+                <div class="component">
+                    <div class="component-subtitle">Microcontroller</div>
+                    <div class="image-placeholder">
+                        <img src="./comp2.png" style="height: 200px; width: auto;" alt="">
+                    </div>
+                    <ul class="specs-list">
+                        <li>Model: ESP32-WROOM-32E, ESP32-DevKitC-32E</li>
+                        <li>Features:</li>
+                        <li>Built-in WiFi and Bluetooth</li>
+                        <li>Arduino compatible</li>
+                        <li>Development board module</li>
+                    </ul>
+                </div>
+    
+                <div class="component">
+                    <div class="component-subtitle">Power Supply</div>
+                    <div class="image-placeholder">
+                        <img src="./comp3.png" style="height: 200px; width: auto;" alt="">
+    
+                    </div>
+                    <ul class="specs-list">
+                        <li>Model: Hi-Link HLK-PM01</li>
+                        <li>Output: 5V/3W</li>
+                        <li>Type: Switch Power Supply Module</li>
+                        <li>Purpose: Stable power delivery to the system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mobile Application</h2>
+            <div class="image-placeholderrr">
+                <img src="./HLss.png" style="height: 500px; width: auto;" alt="">
+
+            </div>
+            <ul class="specs-list">
+                <li>Development Platform: Android Studio</li>
+                <li>Real-time data fetching through API</li>
+                <li>User-friendly interface</li>
+                <li>Data visualization</li>
+                <li>Push notifications</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Backend Integration</h2>
+            <ul class="specs-list">
+                <li>API-based data communication</li>
+                <li>Real-time data synchronization</li>
+                <li>Secure data transfer protocols</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>System Architecture</h2>
+            <div class="image-placeholder">
+                <img src="./comp4.jpg" style="height: 150px; border-radius: 6px; width: auto;" alt="">
+            </div>
+            <p>The system architecture consists of three integrated layers: a DFRobot ultrasonic 
+                sensor collects water level data, an ESP32 microcontroller processes and transmits
+                 this data via WiFi, and an Android application receives and displays the information
+                  through API integration.</p>
+
+                  <p style="font-weight: 300;">Features: Real-time water level monitoring with push alerts, 
+                    data tracking, and Android app-based remote access.
+
+                  </p>
+                      <p style="font-weight: 300;">Benefits: Efficient water management with accurate 
+                        monitoring, low maintenance, and weather-resistant operation.</p>
+        </div>
+
+        <div class="section2">
+        <div class="team-section">Project Team</div>
+        <div class="team-member">
+            <div class="team-member-name">Shreyas Arjunwadkar [ECE]</div>
+            <div class="team-member-role">Embedded System Engineer</div>
+        </div>
+        <div class="team-member">
+            <div class="team-member-name">Prathamesh Raikar [ECE]</div>
+            <div class="team-member-role">Embedded System Engineer</div>
+        </div>
+        <div class="team-member">
+            <div class="team-member-name">Prabal Birajdar [CSE]</div>
+            <div class="team-member-role">Application Developer</div>
+        </div>
+        <div class="team-member">
+            <div class="team-member-name">Satish Hebbal [CSE]</div>
+            <div class="team-member-role">Visual Designer</div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logos">
+            <img src="./GITfullLogo.png" alt="GIT Logo" class="footer-logo">
+            
+            <img src="./InAppLogo.png" alt="HydroLink Logo" class="footer-logo">
+        </div>
+        <!-- <img src="./wavee.png" alt="" class="footer-wave"> -->
+    </footer>
+</body>
+</html>
